@@ -1,9 +1,9 @@
 #include "DxLib.h"
-#include "Input.h" // 以前提示されたInputクラスを使用
+#include "Input.h" 
 
 // ウィンドウサイズ
-const int SCREEN_WIDTH = 960;
-const int SCREEN_HEIGHT = 640;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 720;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     // DxLib初期化
@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
     if (DxLib_Init() == -1) return -1;
 
-    // 1. 描画用のキャンバスを作成
+    //描画用のキャンバスを作成
     int canvasHandle = MakeScreen(SCREEN_WIDTH, SCREEN_HEIGHT, FALSE);
     SetDrawScreen(canvasHandle);
     ClearDrawScreen(); // キャンバスを初期化
@@ -80,10 +80,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         //  画面表示 
         ClearDrawScreen();
 
-        // 1. キャンバスを描画
+        //キャンバスを描画
         DrawGraph(0, 0, canvasHandle, FALSE);
 
-        // 2. カーソルのプレビューを表示（現在の色と太さ）
+        //カーソルのプレビューを表示（現在の色と太さ）
         DrawCircle(mouseX, mouseY, brushSize, drawColor, isRDown ? FALSE : TRUE);
         if (isRDown) DrawCircle(mouseX, mouseY, brushSize + 1, GetColor(255, 255, 255), FALSE); // 消しゴム時は枠表示
 
